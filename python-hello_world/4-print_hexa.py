@@ -1,3 +1,2 @@
-#!/usr/bin/python3
-for num in range(99):
-    print(f"{num} = 0x%x" % num)
+for i in range(99):
+    print("{} = 0x{:02x}".format(i, i))
