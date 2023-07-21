@@ -1,2 +1,2 @@
-for number in range(99):
-    print(f"Decimal: {number}, Hexadecimal: {hex(number)}")
+for i in range(99):
+    print(f"{i} - {hex(i)}")
