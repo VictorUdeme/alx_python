@@ -21,7 +21,7 @@ def validate_password(password):
         return True
     else:
         return False
-    
+    validate_password = __import__('6-password').validate_password  
 print(validate_password("Password123"))
 print(validate_password("abc123"))
 print(validate_password("Password 123"))
