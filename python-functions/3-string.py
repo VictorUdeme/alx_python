@@ -1,15 +1,15 @@
 def reverse_string(string):
 
-    reversed_str = ""
+    reverse_string = ""
 
     
     for i in range(len(string) - 1, -1, -1):
        
-        reversed_str += string[i]
+        reverse_string += string[i]
 
-    return reversed_str
+    return reverse_string
 
-
+reverse_string = __import__('3-string').reverse_string
 print(repr(reverse_string("Hello")))         
 print(repr(reverse_string("")))            
 print(repr(reverse_string("madam")))        
