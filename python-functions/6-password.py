@@ -27,7 +27,7 @@ def validate_password(password):
         return False
 
 # Test cases
-print(validate_password("Password123"))   
-print(validate_password("abc123"))        
-print(validate_password("Password 123"))  
-print(validate_password("password123"))  
+print(validate_password("Password123"))   # True (Meets all conditions)
+print(validate_password("abc123"))        # False (No uppercase letter)
+print(validate_password("Password 123"))  # False (Contains space)
+print(validate_password("password123"))   # False (No uppercase letter and digit)
