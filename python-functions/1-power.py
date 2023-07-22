@@ -1,6 +1,16 @@
 def pow(a, b):
-    result = a ^ b
-    return (result)
+    if b == 0:
+        return 1
+    
+    result = 1
+    exponent = abs(b)
+
+    while exponent > 0:
+        if exponent % 2 == 1:
+            result *= a
+        a *= a
+        exponent //= 2
+    return result if b >= 0 else 1 / result
 
 pow = __import__('1-power').pow
 print(pow(2, 2))
