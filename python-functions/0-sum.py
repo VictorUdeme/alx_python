@@ -6,6 +6,6 @@ def add(a, b):
     return a
 
 
-print(__import__('0-sum').add(1, 2))    # Output: 3
-print(__import__('0-sum').add(98, 0))   # Output: 98
-print(__import__('0-sum').add(100, -2)) # Output: 98
+print(add(1, 2))  
+print(add(98, 0))
+print(add(100, -2)) 
