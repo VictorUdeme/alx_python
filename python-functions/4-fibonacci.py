@@ -12,7 +12,8 @@ def fibonacci_sequence(n):
         fibonacci_numbers.append(next_number)
     
     return fibonacci_numbers
-
+if __name__ == "__main__":
+    fibonacci_sequence = __import__('4-fibonacci').fibonacci_sequence
 
 print(fibonacci_sequence(6))
 print(fibonacci_sequence(1))
