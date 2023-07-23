@@ -1,25 +1,25 @@
 def validate_password(password):
+   
     if len(password) < 8:
         return False
-    uppercase_letters = 0 
-    lowercase_letters = 0
-    digits = 0
-    for character in password:
-        if character.isupper():
-            uppercase_letters  += 1
-        elif character.islower():
-            lowercase_letters += 1
-        elif character.isdigit():
-            digits+= 1
 
-    if uppercase_letters == 0 or lowercase_letters == 0 or digits == 0:
-        return True
-    if " " in password:
+    has_uppercase = False
+    has_lowercase = False
+    has_digit = False
+
+    for x in password:
+        if x.isupper():
+            has_uppercase = True
+        elif x.islower():
+            has_lowercase = True
+        elif x.isdigit():
+            has_digit = True 
+    if ' ' in password:
         return False
     
-    return True
-
-print(validate_password("Password123"))   
-print(validate_password("abc123"))        
-print(validate_password("Password 123"))  
-print(validate_password("password123"))   
+    if has_uppercase and has_lowercase and has_digit:
+        return True
+    else:
+        return False
+    
+    validate_password = __import__('6-password').validate_password
