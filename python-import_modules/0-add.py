@@ -1,10 +1,17 @@
+# File: main.py
+
 a = 1
 b = 2
 
-# The following block ensures the code is non-executable when imported
-if __name__ == "__main__":
-    # Import the 'add' function from add_0.py
-    import add_0
+# Import the 'add_0' module
+import add_0
 
-    print("{a} + {b} = {result}".format(a=a, b=b, result=add_0.add(a, b)))
+# Calculate the result using the 'add' function from 'add_0' module
+result = add_0.add(a, b)
+
+# Print the result using .format() to display the values
+print("{a} + {b} = {result}".format(a=a, b=b, result=result))
+
+if __name__ == "__main__":
+    pass
 
