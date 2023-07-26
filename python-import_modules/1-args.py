@@ -1,12 +1,17 @@
 import sys
 
+# The following block ensures the code is non-executable when imported
 if __name__ == "__main__":
-    number = len(sys.argv) - 1
-    print("{} argument{}:".format(number, 's' if number != 1 else ''), end='')
+    # Get the number of arguments
+    num_arguments = len(sys.argv) - 1
 
-    if number == 0:
-        print("\n:.")
-   
+    # Print the number of arguments
+    print("{} argument{}:".format(num_arguments, 's' if num_arguments != 1 else ''))
+
+    if num_arguments == 0:
+        # If no arguments were passed, print a dot and a new line
+        print(":.")
     else:
+        # Otherwise, print the arguments with their positions
         for i, arg in enumerate(sys.argv[1:], start=1):
-            print("\n{}: {}" .format(i, arg))
+            print("{}: {}".format(i, arg))
