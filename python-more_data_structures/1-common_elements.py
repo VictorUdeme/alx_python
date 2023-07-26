@@ -1,7 +1,11 @@
-def common_elements(set_1, set_2):
-  """Returns a set of common elements in two sets."""
+def common_elements(*sets):
+  """Returns a set of common elements in two or more sets."""
   common_elements = set()
-  for element in set_1:
-    if element in set_2:
-      common_elements.add(element)
+  for set_ in sets:
+    for element in set_:
+      if element in common_elements:
+        continue
+      if element in set_:
+        common_elements.add(element)
   return common_elements
+
