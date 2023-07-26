@@ -1,12 +1,20 @@
 def safe_print_division(a, b):
-    try:
-        result = (a) / (b)
-    except ZeroDivisionError:
-        result = None
-    finally:
-        if result is not None:
-            print("Inside result: {}".format(result))
-            print("{} / {} = {}".format(a, b, result))
-        else:
-            print("Inside result: None")
-        
+  """
+  Divides 2 integers and prints the result.
+
+  Args:
+    a: The first integer.
+    b: The second integer.
+
+  Returns:
+    The value of the division, otherwise: None.
+  """
+
+  try:
+    result = a / b
+  except ZeroDivisionError:
+    result = None
+  finally:
+    print("Inside result: {}".format(result))
+
+  return result
