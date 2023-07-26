@@ -1,6 +1,6 @@
 def safe_print_division(a, b):
     try:
-        result = float(a) / float(b)
+        result = (a) / (b)
     except ZeroDivisionError:
         result = None
     finally:
@@ -9,5 +9,4 @@ def safe_print_division(a, b):
             print("{} / {} = {}".format(a, b, result))
         else:
             print("Inside result: None")
-        return result
-
+        
