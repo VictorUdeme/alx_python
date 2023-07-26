@@ -11,5 +11,4 @@ def print_arguments():
             print(f"{i}: {arg}")
 
 if __name__ == "__main__":
-    pass
-   
+    print_arguments()
