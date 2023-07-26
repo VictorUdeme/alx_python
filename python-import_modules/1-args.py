@@ -1,20 +1,14 @@
 import sys
 
 def print_arguments():
-  """
-  Prints the number of and the list of its arguments.
+    argv = sys.argv[1:]
+    num_args = len(argv)
 
-  Returns:
-    Nothing.
-  """
+    print(f"Number of argument{'s' if num_args != 1 else ''}: {num_args}{'.' if num_args == 0 else ':'}")
 
-  number_of_arguments = len(sys.argv)
-  if number_of_arguments == 0:
-    print("No arguments.")
-  else:
-    print("{} argument(s):".format(number_of_arguments))
-    for i in range(1, number_of_arguments + 1):
-      print("{}: {}".format(i, sys.argv[i - 1]))
+    if num_args > 0:
+        for i, arg in enumerate(argv, 1):
+            print(f"{i}: {arg}")
 
 if __name__ == "__main__":
-  print_arguments()
+    print_arguments()
