@@ -17,7 +17,7 @@ def pow(a, b):
     return result if b >= 0 else 1 / result
 
 if __name__ == "__main__":
-    pow = __import__('1-power').pow
+    pow = __import__('1-pow').pow
 
     print(pow(2, 2))
     print(pow(98, 2))
