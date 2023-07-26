@@ -7,8 +7,7 @@ def safe_print_division(a, b):
     finally:
         print("Inside result:".format(result))
 
-    a = 9
-    b = 3
+   
     safe_print_division(a, b)
         
     
