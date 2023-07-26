@@ -1,14 +1,10 @@
 def safe_print_division(a, b):
     try:
-        result = a/b
+        result = a / b
     except ZeroDivisionError:
         result = None
-
     finally:
-        print("Inside result:".format(result))
-
-    if __name__ == "__main__":
-        safe_print_division(a, b)
-        
-    
-    
+        print("Inside result: {}".format(result))
+        if result is not None:
+            print("{} / {} = {}".format(a, b, result))
+        return result
