@@ -7,9 +7,8 @@ def safe_print_division(a, b):
     finally:
         print("Inside result:".format(result))
 
-    a = 12
-    b = 3
-    safe_print_division(a, b)
+    if __name__ == "__main__":
+        safe_print_division(a, b)
         
     
     
