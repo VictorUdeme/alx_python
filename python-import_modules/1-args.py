@@ -1,7 +1,7 @@
 import sys
 
 if __name__ == "__main__":
-    number = len(sys.argv)
+    number = len(sys.argv) - 1
     print("{} argument{}:".format(number, 's' if number != 1 else ''), end='')
 
     if number == 0:
