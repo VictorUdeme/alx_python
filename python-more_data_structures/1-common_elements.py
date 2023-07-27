@@ -1,7 +1,2 @@
 def common_elements(set_1, set_2):
-  """Returns a set of common elements in two sets."""
-  common_elements = set()
-  for element in set_1:
-    if element in set_2:
-      common_elements.add(element)
-  return common_elements
+    return set_1.intersection(set_2)
