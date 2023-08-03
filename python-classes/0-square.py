@@ -1,5 +1,8 @@
 class Square:
-    def __init__(self, size="0"):
+
+    def __init__(self, size):
         self.__size = size
 
-size = Square()
+    @property
+    def size(self):
+        return self.__size
