@@ -1,3 +1,6 @@
+"""
+task 3, classes project
+"""
 class Square:
     def __init__(self, size=0):
         '''
