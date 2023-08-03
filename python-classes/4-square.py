@@ -1,4 +1,8 @@
+"""
+task 3, classes project
+"""
 class Square:
+    """This class defines a square by:"""
     def __init__(self, size=0):
         '''
         Initialize a square instance with an optional size.
