@@ -2,6 +2,8 @@
 task 3, classes project
 """
 class Square:
+    """This class defines a square by:"""
+    
     def __init__(self, size=0):
         '''
         Initialize a square instance with an optional size.
@@ -42,4 +44,7 @@ class Square:
         self.__size = value
 
     def area(self):
+        """Public instance method:
+           def area(self): that returns the current square area
+        """
         return self.__size ** 2
