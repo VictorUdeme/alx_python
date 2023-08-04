@@ -1,16 +1,15 @@
 """
 task 2, inheritance Task
 """
-def inherit_from(obj, a_class):
-    """Returns True if the object is an instance of a class that inherited (directly or indirectly)
-      from the specified class ; otherwise False.
+def inherits_from(obj, a_class):
     """
-    if not isinstance(obj, type):
-        raise TypeError("object must be an instance of a class")
-    if a_class is obj.__class__:
-        return True
-    for base_class in obj.__class__.__base__:
-        if inherit_from(base_class, a_class):
-            return True
-        else:
-            return False
+    Check if the object is an instance of a class that inherited (directly or indirectly) from the specified class.
+
+    Parameters:
+        obj: Any - The object to check.
+        a_class: type - The specified class to compare against.
+
+    Returns:
+        bool: True if the object is an instance of a subclass of the specified class; otherwise, False.
+    """
+    return issubclass(obj.__class__, a_class) and obj.__class__ is not a_class
