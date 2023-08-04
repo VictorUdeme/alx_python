@@ -5,12 +5,8 @@ class BaseGeometry:
 
     This class serves as a foundation for creating specific geometrical shape classes
     with common attributes and methods related to geometry.
-
-    Attributes:
-        None
-
-    Methods:
-        None
     """
     def __dir__(cls):
-        pass
+        return("This is dir for all class")
+
+    attributes = super().__dir__()
