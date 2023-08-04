@@ -1,4 +1,4 @@
-"""BaseGeometry class (Integer_Validator)"""
+"""BaseGeometry class(SuperClass)"""
 class BaseGeometry:
     def area(self):
         """This raises an Exception error if area is not implemented"""
