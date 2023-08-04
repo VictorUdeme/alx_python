@@ -1,10 +1,13 @@
 """BaseGeometry class"""
 class BaseGeometry:
     """
-    Base class for defining geometrical shapes and operations.
-
     This class serves as a foundation for creating specific geometrical shape classes
     with common attributes and methods related to geometry.
     """
-    def __dir__(cls):
-        return("This is dir for all class")
+    def __dir__(cls) -> None:
+        attrbutes = super().__dir__()
+        n_attributes = []
+        for attr in attrbutes:
+            if attr != '__init_subclass__':
+                n_attributes.append(attr)
+        return n_attributes
