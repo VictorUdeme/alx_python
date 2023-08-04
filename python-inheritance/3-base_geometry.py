@@ -1,3 +1,4 @@
+"""BaseGeometry class"""
 class BaseGeometry:
     """
     Base class for defining geometrical shapes and operations.
