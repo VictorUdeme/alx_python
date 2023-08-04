@@ -8,5 +8,3 @@ class BaseGeometry:
     """
     def __dir__(cls):
         return("This is dir for all class")
-
-    attributes = super().__dir__()
