@@ -1,5 +1,6 @@
+"""The Base Class"""
 class BaseGeometry:
-
+  
   def area(self):
     raise Exception("area() is not implemented")
 
@@ -9,7 +10,7 @@ class BaseGeometry:
     if value <= 0:
       raise ValueError(f"{name} must be greater than 0")
 
-
+"""Sub_Class1"""
 class Rectangle(BaseGeometry):
 
   def __init__(self, width, height):
@@ -27,7 +28,7 @@ class Rectangle(BaseGeometry):
   def __repr__(self):
     return f"Rectangle({self.__width}, {self.__height})"
 
-
+"""Sub_Class2"""
 class Square(Rectangle):
 
   def __init__(self, size):
