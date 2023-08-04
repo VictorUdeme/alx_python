@@ -1,9 +1,9 @@
 """BaseGeometry class"""
 class BaseGeometry:
-    def area(self):
-        raise Exception("area() is not implemented")
-
-
+    pass
+"""This class has no attribute or method, it is just a placeholder 
+    for other classes that will inherit from it
+"""
 
 """instanciation"""
 myobject = BaseGeometry()
