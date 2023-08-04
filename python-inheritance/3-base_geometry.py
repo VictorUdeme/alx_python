@@ -12,4 +12,7 @@ class BaseGeometry:
     Methods:
         None
     """
-    pass
+    def __init__(self) -> None:
+        pass
+myobject = BaseGeometry
+print(dir(myobject))
