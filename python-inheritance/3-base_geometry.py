@@ -12,4 +12,6 @@ class BaseGeometry:
     Methods:
         None
     """
+    def __dir__(self):
+        return "This is ..."
     pass
