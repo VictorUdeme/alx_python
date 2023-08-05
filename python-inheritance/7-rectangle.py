@@ -1,34 +1,8 @@
-"""
-BaseGeometry class
-"""
-
-class BaseGeometryMeta(type):
-     """
-     Meta class for BaseGeometry
-     """
-     def __dir__(self):
-        # Call the parent class's __dir__ method to get the default attributes
-       attributes = super().__dir__()
-       new_attribute = [item for item in attributes if item !="__init_subclass__"]
-       return new_attribute
-    
-
-
-class BaseGeometry(metaclass=BaseGeometryMeta):
-    """
-    This class serves as a foundation for creating specific geometrical shape classes
-    with common attributes and methods related to geometry.
-    """
-    def __dir__(self):
-        # Call the parent class's __dir__ method to get the default attributes
-       attributes = super().__dir__()
-       new_attribute = [item for item in attributes if item !="__init_subclass__"]
-       return new_attribute
-    
+"""BaseGeometry class(SuperClass)"""
+class BaseGeometry:
     def area(self):
         """This raises an Exception error if area is not implemented"""
         raise Exception("area() is not implemented")
-
 
     def integer_validator(self, name, value):
         """This method validates the value passed in.
@@ -43,8 +17,6 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
             
             raise ValueError(f"{name} must be greater than 0")
 
-
-
 class Rectangle(BaseGeometry):
    
     """
@@ -57,10 +29,10 @@ class Rectangle(BaseGeometry):
             The __init__() method of this subclass validate the 
             width and height perimeters
         """
-        self.__width = super().integer_validator("width", width)
-        self.__height = super().integer_validator("height", height)
-
-        
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self.__width = width
+        self.__height = height
 
     def area(self):
         """
