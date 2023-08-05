@@ -62,15 +62,6 @@ class Rectangle(BaseGeometry):
 
         
 
-    
-    def __str__(self):
-        """
-        The __str__() method of the Rectangle class returns a string representation of the rectangle.
-        it follows this format:
-            [Rectangle] <width>/<height>
-        """
-        return f"[Rectangle] {self.__width}/{self.__height}"
-    
     def area(self):
         """
             This Calculate the area of the rectangle
@@ -79,4 +70,17 @@ class Rectangle(BaseGeometry):
         """
         return self.__width * self.__height
     
+    def __str__(self):
+        """
+        The __str__() method of the Rectangle class returns a string representation of the rectangle.
+        it follows this format:
+            [Rectangle] <width>/<height>
+        """
+        return f"[Rectangle] {self.__width}/{self.__height}"
+    def __repr__(self):
+        """
+        The __repr__() method of the Rectangle class returns a representation of the rectangle that can 
+        be used to recreate the object.
+        """
+        return f"Rectangle{self.__width}, {self.__height}"
         
