@@ -1,5 +1,5 @@
 """
-This is a module that contains a function to check if an object inherits from a given class.
+This describes the module
 """
 
 
