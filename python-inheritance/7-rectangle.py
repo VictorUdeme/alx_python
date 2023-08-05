@@ -23,6 +23,11 @@ class Rectangle(BaseGeometry):
         This class inherits from the BaseGeometry class and
         adds two private attributes: __width and __height
     """
+    def __dir__(self):
+        # Call the parent class's __dir__ method to get the default attributes
+       attributes = super().__dir__()
+       new_attribute = [item for item in attributes if item !="__init_subclass__"]
+       return new_attribute
     
     def __init__(self, width, height):
         """
