@@ -1,10 +1,12 @@
-"""
-This functions takes 
-two parameters
-"""
-def inherits_from(obj, a_class):   
+def inherits_from(obj, a_class):
     """
-    Description of the function
+    Check if an object inherits from a given class.
+
+    Parameters:
+        obj (object): The object to check.
+        a_class (class): The class to check against.
+
+    Returns:
+        bool: True if the object inherits from the class, False otherwise.
     """
-    return (issubclass(obj.__class__, a_class) and
-            obj.__class__ is not a_class)
+    return issubclass(obj.__class__, a_class) and obj.__class__ is not a_class
