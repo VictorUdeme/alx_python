@@ -1,4 +1,4 @@
-
+"""BaseGeometry class(SuperClass)"""
 """
 BaseGeometry class
 """
@@ -70,9 +70,9 @@ class Rectangle(BaseGeometry):
         """The repr magic method """ 
         return f"Rectangle{self.__width}, {self.__height}"
     
-"""sub_class """
+
 class square():
     def __init__(self, size):
         self.__size =super().integer_validator("size", size)
-        super().__init__(size, size)
+        super().__init__(size)
        
