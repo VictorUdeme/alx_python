@@ -83,20 +83,21 @@ class Rectangle(BaseGeometry):
     
 class Square(Rectangle):
     """
-        This class inherits from the Rectangle class and adds a private attribute: __size.
-        The __size attribute won't be accessible from outside the class.
+    This class inherits from the Rectangle class and adds a private attribute: __size.
+    The __size attribute won't be accessible from outside the class.
     """
     def __init__(self, size):
         """
-            Here, The __init__() method of the Square class takes a single parameter: size.
-
+        Here, The __init__() method of the Square class takes a single parameter: size.
         """
+        self.integer_validator("size", size)  # Validate the 'size' parameter
         super().__init__(size, size)
         self.__size = size
     
     def area(self):
         """
-            Implement the area method here as we did the previous.
+        Implement the area method here as we did the previous.
         """
         return self.__size * self.__size
+
    
