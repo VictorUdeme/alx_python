@@ -10,8 +10,8 @@ class BaseGeometryMeta(type):
     def __dir__(self):
         # Call the parent class's __dir__ method to get the default attributes
         attributes = super().__dir__()
-        new_attribute = [item for item in attributes 
-                         if item != "__init_subclass__"]
+        new_attribute = [item for item in attributes
+        if item != "__init_subclass__"]
         return new_attribute
 
 
@@ -20,7 +20,7 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
         # Call the parent class's __dir__ method to get the default attributes
         attributes = super().__dir__()
         new_attribute = [item for item in attributes 
-                         if item != "__init_subclass__"]
+        if item != "__init_subclass__"]
         return new_attribute
 
     def area(self):
@@ -44,12 +44,12 @@ class Rectangle(BaseGeometry):
     def __dir__(self):
         attributes = super().__dir__()
         new_attribute = [item for item in attributes 
-                         if item != "__init_subclass__"]
+        if item != "__init_subclass__"]
         return new_attribute
 
     def __init__(self, width, height):
         """The init method"""
-        
+
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -69,20 +69,21 @@ class Rectangle(BaseGeometry):
 
     def __repr__(self):
         """
-        this returns a representation of the rectangle that can 
-        be used to recreate the object.
+    this returns a representation of the rectangle that can
+    be used to recreate the object.
         """
         return f"Rectangle({self.__width}, {self.__height})"
 
 
 class Square(Rectangle):
     """
-    This class inherits from the Rectangle class  
+    This class inherits from the Rectangle class.
     """
 
     def __init__(self, size):
         """
-        Here, The __init__() method of the Square class takes a single parameter: size.
+        Here, The __init__() method of the Square
+        class takes a single parameter: size.
         """
         self.integer_validator("size", size) 
         super().__init__(size, size)
