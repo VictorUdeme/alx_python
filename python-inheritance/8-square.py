@@ -20,7 +20,9 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
         return new_attribute
 
     def area(self):
-        """This raises an Exception error if area is not implemented"""
+        """
+        This raises an Exception error if area is not implemented
+        """
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
@@ -41,11 +43,9 @@ class Rectangle(BaseGeometry):
         new_attribute = [item for item in attributes if item != "__init_subclass__"]
         return new_attribute
 
-
     def __init__(self, width, height):
-        """
-        The init method   
-        """
+        """The init method"""
+        
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -76,7 +76,6 @@ class Square(Rectangle):
     This class inherits from the Rectangle class  
     """
 
-    
     def __init__(self, size):
         """
         Here, The __init__() method of the Square class takes a single parameter: size.
