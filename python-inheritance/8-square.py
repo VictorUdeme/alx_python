@@ -7,7 +7,7 @@ class BaseGeometryMeta(type):
     """
     Meta class for BaseGeometry
     """
-    def __dir__(self):
+    def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
         attributes = super().__dir__()
         new_attribute = [item for item in attributes
@@ -16,11 +16,11 @@ class BaseGeometryMeta(type):
 
 
 class BaseGeometry(metaclass=BaseGeometryMeta):
-    def __dir__(self):
+    def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
         attributes = super().__dir__()
-        new_attribute = [item for item in attributes 
-        if item != "__init_subclass__"]
+        new_attribute = [item for item in attributes if item != 
+        "__init_subclass__"]
         return new_attribute
 
     def area(self):
@@ -41,7 +41,7 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
 
 
 class Rectangle(BaseGeometry):
-    def __dir__(self):
+    def __dir__(cls):
         attributes = super().__dir__()
         new_attribute = [item for item in attributes 
         if item != "__init_subclass__"]
