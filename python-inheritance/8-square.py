@@ -1,22 +1,5 @@
 """BaseGeometry class(SuperClass)"""
-
-
-class BaseGeometryMeta(type):
-     """
-     Meta class for BaseGeometry
-     """
-     def __dir__(self):
-        # Call the parent class's __dir__ method to get the default attributes
-       attributes = super().__dir__()
-       new_attribute = [item for item in attributes if item !="__init_subclass__"]
-       return new_attribute
-
-class BaseGeometry(metaclass=BaseGeometryMeta):
-    def __dir__(self):
-        # Call the parent class's __dir__ method to get the default attributes
-       attributes = super().__dir__()
-       new_attribute = [item for item in attributes if item !="__init_subclass__"]
-       return new_attribute
+class BaseGeometry:
     def area(self):
         """This raises an Exception error if area is not implemented"""
         raise Exception("area() is not implemented")
@@ -43,7 +26,8 @@ class Rectangle(BaseGeometry):
     
     def __init__(self, width, height):
         """
-        The init method
+            The __init__() method of this subclass validate the 
+            width and height perimeters
         """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
@@ -52,21 +36,42 @@ class Rectangle(BaseGeometry):
 
     def area(self):
         """
-        This Area the area of the instance
+            This Calculate the area of the rectangle
+            The area of a rectangle is calculated by: 
+            multiplying the Width and Height
         """
         return self.__width * self.__height
     
     def __str__(self):
-        """str magic method """
+        """
+        The __str__() method of the Rectangle class returns a string representation of the rectangle.
+        it follows this format:
+            [Rectangle] <width>/<height>
+        """
         return f"[Rectangle] {self.__width}/{self.__height}"
-    
     def __repr__(self):
-        """The repr magic method """ 
+        """
+        The __repr__() method of the Rectangle class returns a representation of the rectangle that can 
+        be used to recreate the object.
+        """
         return f"Rectangle{self.__width}, {self.__height}"
     
-
-class square():
+class Square(Rectangle):
+    """
+        This class inherits from the Rectangle class and adds a private attribute: __size.
+        The __size attribute won't be accessible from outside the class.
+    """
     def __init__(self, size):
-        self.__size =super().integer_validator("size", size)
-        super().__init__(size)
-       
+        """
+            Here, The __init__() method of the Square class takes a single parameter: size.
+
+        """
+        super().__init__(size, size)
+        self.__size = size
+    
+    def area(self):
+        """
+            Implement the area method here as we did the previous.
+        """
+        return self.__size * self.__size
+   
