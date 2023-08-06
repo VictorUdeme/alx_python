@@ -1,27 +1,24 @@
 """
-Base class for geometrical shapes
+Meta class for BaseGeometry
 """
 
 
 class BaseGeometryMeta(type):
-    """
-    Meta class for BaseGeometry
-    """
     def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
         attributes = super().__dir__()
-        new_attribute = [item for item in attributes
-        if item != "__init_subclass__"]
-        return new_attribute
+        new_attributes = [item for item in attributes
+                          if item != "__init_subclass__"]
+        return new_attributes
 
 
 class BaseGeometry(metaclass=BaseGeometryMeta):
     def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
         attributes = super().__dir__()
-        new_attribute = [item for item in attributes if item != 
-        "__init_subclass__"]
-        return new_attribute
+        new_attributes = [item for item in attributes if item !=
+                          "__init_subclass__"]
+        return new_attributes
 
     def area(self):
         """
@@ -30,7 +27,7 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """ 
+        """
         This method validates the value passed in.
         """
         if not isinstance(value, int):
@@ -43,13 +40,12 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
 class Rectangle(BaseGeometry):
     def __dir__(cls):
         attributes = super().__dir__()
-        new_attribute = [item for item in attributes 
-        if item != "__init_subclass__"]
-        return new_attribute
+        new_attributes = [item for item in attributes
+                          if item != "__init_subclass__"]
+        return new_attributes
 
     def __init__(self, width, height):
         """The init method"""
-
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -69,8 +65,8 @@ class Rectangle(BaseGeometry):
 
     def __repr__(self):
         """
-    this returns a representation of the rectangle that can
-    be used to recreate the object.
+        This returns a representation of the rectangle that can
+        be used to recreate the object.
         """
         return f"Rectangle({self.__width}, {self.__height})"
 
@@ -85,7 +81,7 @@ class Square(Rectangle):
         Here, The __init__() method of the Square
         class takes a single parameter: size.
         """
-        self.integer_validator("size", size) 
+        self.integer_validator("size", size)
         super().__init__(size, size)
         self.__size = size
 
