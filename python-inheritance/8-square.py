@@ -1,5 +1,11 @@
 """BaseGeometry class(SuperClass)"""
 class BaseGeometry:
+    def __dir__(self):
+        # Call the parent class's __dir__ method to get the default attributes
+       attributes = super().__dir__()
+       new_attribute = [item for item in attributes if item !="__init_subclass__"]
+       return new_attribute
+   
     def area(self):
         """This raises an Exception error if area is not implemented"""
         raise Exception("area() is not implemented")
@@ -18,6 +24,12 @@ class BaseGeometry:
             raise ValueError(f"{name} must be greater than 0")
 
 class Rectangle(BaseGeometry):
+    
+    def __dir__(self):
+        # Call the parent class's __dir__ method to get the default attributes
+       attributes = super().__dir__()
+       new_attribute = [item for item in attributes if item !="__init_subclass__"]
+       return new_attribute
    
     """
         This class inherits from the BaseGeometry class and
