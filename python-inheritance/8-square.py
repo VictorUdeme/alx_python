@@ -1,3 +1,5 @@
+"""Base class for geometrical shapes."""
+
 class BaseGeometryMeta(type):
     """
     Meta class for BaseGeometry
