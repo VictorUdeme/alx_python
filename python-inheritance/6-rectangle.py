@@ -64,6 +64,4 @@ class Rectangle(BaseGeometry):
         self.__width = super().integer_validator("width", width)
         self.__height = super().integer_validator("height", height)
 
-a = Rectangle
-print(dir(a))
         
