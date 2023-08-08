@@ -6,11 +6,11 @@ class BaseGeometryMeta(type):
      """
      Meta class for BaseGeometry
      """
-     def __dir__(self):
+     def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
        attributes = super().__dir__()
-       new_attribute = [item for item in attributes if item !="__init_subclass__"]
-       return new_attribute
+       return[item for item in attributes if item !="__init_subclass__"]
+       
     
 
 
@@ -19,7 +19,7 @@ class BaseGeometry(metaclass=BaseGeometryMeta):
     This class serves as a foundation for creating specific geometrical shape classes
     with common attributes and methods related to geometry.
     """
-    def __dir__(self):
+    def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
        attributes = super().__dir__()
        new_attribute = [item for item in attributes if item !="__init_subclass__"]
@@ -51,11 +51,10 @@ class Rectangle(BaseGeometry):
         This class inherits from the BaseGeometry class and
         adds two private attributes: __width and __height
     """
-    def __dir__(self):
+    def __dir__(cls):
         # Call the parent class's __dir__ method to get the default attributes
        attributes = super().__dir__()
-       new_attribute = [item for item in attributes if item !="__init_subclass__"]
-       return new_attribute
+       return[item for item in attributes if item !="__init_subclass__"]
     
     def __init__(self, width, height):
         """
@@ -65,4 +64,6 @@ class Rectangle(BaseGeometry):
         self.__width = super().integer_validator("width", width)
         self.__height = super().integer_validator("height", height)
 
+a = Rectangle
+print(dir(a))
         
