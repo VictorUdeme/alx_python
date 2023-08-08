@@ -2,8 +2,8 @@
 BaseGeometry class
 """
 
-
 Rectangle = __import__('7-rectangle').Rectangle
+
 class Square(Rectangle):
     """
     This class inherits from the Rectangle class.
@@ -23,4 +23,3 @@ class Square(Rectangle):
         Implement the area method here as we did the previous.
         """
         return self.__size * self.__size
-     
