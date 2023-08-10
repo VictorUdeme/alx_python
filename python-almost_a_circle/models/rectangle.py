@@ -77,6 +77,15 @@ class Rectangle(Base):
         this returns the value of height x width
         """
         return self.width * self.height
+    
+    def display(self):
+        """
+        Adding the display
+        this displays the output"#"
+        """
+        for _ in range(self.height):
+            print('#' * self.width)
+
 
 
 
