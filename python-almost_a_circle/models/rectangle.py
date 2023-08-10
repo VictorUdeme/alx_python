@@ -102,30 +102,21 @@ class Rectangle(Base):
         updated using using both:
         args and kwarks
         """
-        def update(self, *args, **kwargs):
-            if args:
-                num = len(args)
-                if num > 0:
+        if args:
+                num_args = len(args)
+                if num_args > 0:
                     self.id = args[0]
-                if num > 1:
+                if num_args > 1:
                     self.width = args[1]
-                if num > 2:
+                if num_args > 2:
                     self.height = args[2]
-                if num > 3:
+                if num_args > 3:
                     self.x = args[3]
-                if num > 4:
+                if num_args > 4:
                     self.y = args[4]
-            else:
-                if 'id' in kwargs:
-                    self.id = kwargs['id']
-                if 'width' in kwargs:
-                    self.width = kwargs['width']
-                if 'height' in kwargs:
-                    self.height = kwargs['height']
-                if 'x' in kwargs:
-                    self.x = kwargs['x']
-                if 'y' in kwargs:
-                    self.y = kwargs['y']
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
         
 
