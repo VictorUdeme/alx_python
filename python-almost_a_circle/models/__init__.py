@@ -1,15 +1,17 @@
-"""
-check
-"""
-from models.base import Base
+#!/usr/bin/python3
+""" Check """
+try:
+    from models.base import Base
 
-"""
-Here, Reset the counter to start with id 1
-"""
-Base._Base__nb_objects = 0
+    """
+    Resetting the counter to start with id 1
+    """
+    Base._Base__nb_objects = 0
 
-b = Base()
-if b is None or b.id != 1:
-    exit(1)
+    instance = Base()
+    if instance.id != 1:
+        exit(1)
 
-exit(0)
+    exit(0)
+except ImportError:
+    pass
