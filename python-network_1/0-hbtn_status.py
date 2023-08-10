@@ -2,13 +2,12 @@
 imports requests_package
 """
 import requests
-def fetch_status():
-    """
-    defines fetch_status
-    """
-    response = requests.get('https://alu-intranet.hbtn.io/status')
-    if response.status_code == 200:
-        formatted_response = f'Body respons: \n\t- type: {type(response.text)}\n\t- content: {response.text}'
-        return formatted_response
-    else:
-        raise Exception('Failed to fetch status code')
+
+url = 'https://alu-intranet.hbtn.io/status'
+response = requests.get(url)
+
+if response.status_code == 200:
+    print(response.text)
+else:
+    print(f"Error: {response.status_code}")
+   
