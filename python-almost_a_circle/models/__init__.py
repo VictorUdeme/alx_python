@@ -8,10 +8,9 @@ try:
     """
     Base._Base__nb_objects = 0
 
-    instance = Base()
-    if instance.id != 1:
-        exit(1)
+    if Base().id == 1:
+        exit(0)
 
-    exit(0)
 except ImportError:
     pass
+exit(1)
