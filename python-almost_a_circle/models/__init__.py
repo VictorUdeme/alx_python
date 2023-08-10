@@ -1,3 +1,6 @@
+"""
+class import from base_class
+"""
 from models.base import Base
 
 """
