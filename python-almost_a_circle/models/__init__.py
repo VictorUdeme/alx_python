@@ -1,6 +1,3 @@
-"""
-importing from the baseclass
-"""
 from models.base import Base
 
 # Creating an instance of Base without passing an id
