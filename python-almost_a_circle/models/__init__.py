@@ -1,6 +1,3 @@
-"""
-imports from base class
-"""
 from models.base import Base
 
 """
@@ -11,4 +8,4 @@ instance_without_id = Base()
 """
 Accessing the id attribute of the instance
 """
-print("Instance id:", instance_without_id.id)
+print("OK")
