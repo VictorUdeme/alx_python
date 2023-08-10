@@ -8,7 +8,9 @@ def fetch_status():
     """
     response = requests.get('https://alu-intranet.hbtn.io/status')
     if response.status_code == 200:
-        return response.text
+        data = response.json()  # Assuming the response content is in JSON format
+        formatted_response = f'Body respons: \n\t- type: {type(data)}\n\t- content: {data}'
+        return formatted_response
     else:
         raise Exception('Failed to fetch status code')
     
