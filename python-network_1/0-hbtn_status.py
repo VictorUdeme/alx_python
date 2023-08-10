@@ -14,3 +14,9 @@ def fetch_status():
     else:
         raise Exception('Failed to fetch status code')
     
+"""Calling the function"""
+try:
+    status = fetch_status()
+    print(status)
+except Exception as e:
+    print("An error occurred:", e)
