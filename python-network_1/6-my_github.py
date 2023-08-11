@@ -17,7 +17,7 @@ def get_github_id(username, access_token):
     if response.status_code == 200:
         user_data = response.json()
         user_id = user_data.get("id")
-        print("Your Github ID", user_id)
+        print(user_id)
 
     else:
         print("Failed to retrieve Github ID")
