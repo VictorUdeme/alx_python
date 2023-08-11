@@ -15,7 +15,7 @@ def main():
         print("Error code:", response.status_code)
     else:
         print("Response Body:")
-        print(response.text)
+        print(response.text.decode('utf-8'))
 
 if __name__ == "__main__":
     main()
