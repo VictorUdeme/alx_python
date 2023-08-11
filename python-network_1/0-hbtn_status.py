@@ -14,4 +14,4 @@ if response.status_code == 200:
     print("\t- type:", type(data))
     print("\t- content:", data)
 else:
-    print("Error:", response.status_code)
+    print("Error:", response.status_code) 
