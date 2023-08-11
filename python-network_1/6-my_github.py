@@ -19,7 +19,10 @@ def get_github_id(username, access_token):
         user_id = user_data.get("id")
         print(user_id)
 
-    
+    else:
+        print("None")
+       
+
 
 if __name__ == '__main__':
     username = sys.argv[1]
