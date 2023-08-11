@@ -4,6 +4,7 @@ module-code_erro
 
 
 import requests
+import sys
 
 def send_request(url):
     try:
