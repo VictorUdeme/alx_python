@@ -6,7 +6,11 @@ module-code_erro
 import requests
 import sys
 
-url = input("Enter a URL: ")
+url = input("Enter a URL: ").strip()
+
+if not url:
+    print("Error: URL is required")
+    sys.exit()
 
 response = requests.get(url)
 
