@@ -4,16 +4,14 @@ importing module
 
 import requests
 
-url = "https://alu-intranet.hbtn.io/status"
-request = requests.get(url)
+response = requests.get('https://alu-intranet.hbtn.io/status')
 
-if request.status_code == 200:
-    data = request.text
-    print("Body response:")
-    print("\t- type:", type(data))
-    print("\t- content:", data)
+if response.status_code == 200:
+    for line in response.text.splitlines():
+        print(f"\t- {line}")
 else:
-    print("Failed to fetch data from the URL. Status code:", request.status_code)
+    print(f"An error occurred: {response.status_code}")
+
 
 
   
