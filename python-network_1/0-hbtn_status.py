@@ -1,14 +1,35 @@
 """
-imports requests_package
+imports module
 """
+
+
 import requests
-def fetch_status():
+
+def fetch_and_display_status(url):
     """
-    defines fetch_status
+    Fetches the status from a given URL using the requests package.
+
+    Args:
+        url (str): The URL to fetch the status from.
+
+    Returns:
+        None
+
+    Prints:
+        The type and content of the response in the expected format.
     """
-    response = requests.get('https://alu-intranet.hbtn.io/status')
+    response = requests.get(url)
+
     if response.status_code == 200:
-        return response.text
+        data = response.text  # Get the response content as text
+        print("Body response:")
+        print("\t- type:", type(data))
+        print("\t- content:", data)
     else:
-        raise Exception('Failed to fetch status code')
-    
+        print("Failed to fetch the URL. Status code:", response.status_code)
+
+# URL to fetch the status from
+url = "https://alu-intranet.hbtn.io/status"
+
+# Fetch and display the status
+fetch_and_display_status(url)
