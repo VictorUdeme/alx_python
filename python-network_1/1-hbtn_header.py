@@ -1,19 +1,20 @@
 """
 import module(requests and sys)
 """
+
+
 import requests
 import sys
 
-def get_request_id(url):
-    """
-    Gets the value of the X-Request-Id header
-    from the response to the given URL.
-    """
-    response = requests.get(url)
-    return response.headers['X-Request-Id']
+url = sys.argv[1]
 
-if __name__ == '__main__':
-    ur1 = sys.argv[1]
-    request_id = get_request_id(ur1)
-    print(request_id)
+response = requests.get(url)
+headers = response.headers
+
+if 'X-Request-Id' in headers:
+    x_request_id = headers['X-Request-Id']
+    print("X-Request-Id:", x_request_id)
+else:
+    print("X-Request-Id not found in response headers.")
+
     
