@@ -15,12 +15,11 @@ def main():
     
     try:
         response = requests.get(url)
-        
         if response.status_code >= 400:
             print(f"Error code: {response.status_code}")
     except requests.exceptions.RequestException:
         print("An error occurred")
-    
+
 if __name__ == "__main__":
     main()
 
