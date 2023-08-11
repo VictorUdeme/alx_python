@@ -7,22 +7,24 @@ import requests
 import sys
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <URL>")
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <URL> <email>")
         sys.exit(1)
-    
+
     url = sys.argv[1]
-    
-    try:
-        response = requests.get(url)
-        print("Response body:")
+    email = sys.argv[2]
+
+    data = {"email": email}
+
+    response = requests.post(url, data=data)
+
+    if response.status_code == 200:
+        print("Response Body:")
         print(response.text)
-        
-        if response.status_code >= 400:
-            print("Error code:", response.status_code)
-    except requests.exceptions.RequestException as e:
-        print("An error occurred:", e)
+    else:
+        print("Error:", response.status_code)
 
 if __name__ == "__main__":
-    main() 
+    main()
+
 
