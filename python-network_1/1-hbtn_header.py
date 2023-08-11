@@ -15,5 +15,4 @@ if 'X-Request-Id' in headers:
     x_request_id = headers['X-Request-Id']
     print(x_request_id)
 else:
-    print("X-Request-Id not found in response headers.")
-    
+    print("None")
