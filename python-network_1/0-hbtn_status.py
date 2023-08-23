@@ -11,3 +11,4 @@ if response.status_code == 200:
     print(f"\t- content: {response.text}")
 else:
     print(f"An error occured: {response.status_code}")
+    
