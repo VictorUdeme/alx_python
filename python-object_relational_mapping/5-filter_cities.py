@@ -1,44 +1,29 @@
+import sys
 import MySQLdb
 
-def list_cities_by_state(username, password, database, state):
-  """
-  Lists all cities of the specified state.
+if __name__ == '__main__':
+    
+    password = sys.argv[2]
+    database_name = sys.argv[3]
+    state_name = sys.argv[4]
 
-  Args:
-    username: The MySQL username.
-    password: The MySQL password.
-    database: The MySQL database name.
-    state: The name of the state.
+    # Connect to the MySQL server
+    db = MySQLdb.connect(host='localhost', user=username, passwd=password, db=database_name)
 
-  Returns:
-    A list of cities.
-  """
+    # Create a cursor object to execute SQL queries
+    cursor = db.cursor()
 
-  connection = MySQLdb.connect(host="localhost", port=3306, user=username, password=password, database=database)
-  cursor = connection.cursor()
+    # Execute the SQL query to retrieve all cities of the given state
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities \
+                    JOIN states ON cities.state_id = states.id WHERE states.name = %s \
+                    ORDER BY cities.id ASC", (state_name,))
 
-  query = "SELECT name FROM cities WHERE state = %s ORDER BY id ASC"
-  cursor.execute(query, (state,))
+    # Fetch all the rows returned by the query
+    rows = cursor.fetchall()
 
-  cities = []
-  for row in cursor:
-    cities.append(row[0])
+    # Print the results in the specified format
+    print('\n'.join([f'{row[0]}: {row[1]} ({row[2]})' for row in rows]))
 
-  connection.close()
-
-  return cities
-
-if __name__ == "__main__":
-  # Get the arguments
-  username = input("Enter MySQL username: ")
-  password = input("Enter MySQL password: ")
-  database = input("Enter MySQL database name: ")
-  state = input("Enter state name: ")
-
-  # List the cities
-  cities = list_cities_by_state(username, password, database, state)
-
-  # Print the results
-  print("The following cities are in the state of {}:".format(state))
-  for city in cities:
-    print(city)
+    # Close the cursor and database connections
+    cursor.close()
+    db.close()
