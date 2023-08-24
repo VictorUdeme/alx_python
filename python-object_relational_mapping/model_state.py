@@ -25,4 +25,3 @@ if __name__ == "__main__":
     
     # Create the table
     Base.metadata.create_all(engine)
-
