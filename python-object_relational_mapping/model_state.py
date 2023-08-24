@@ -2,6 +2,7 @@
 """
 Defines the State class and creates the database schema.
 """
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
@@ -22,6 +23,6 @@ if __name__ == "__main__":
         'mysql+mysqldb://username:password@localhost:3306/db_name',
         pool_pre_ping=True
     )
-    
+
     # Create the table
     Base.metadata.create_all(engine)
