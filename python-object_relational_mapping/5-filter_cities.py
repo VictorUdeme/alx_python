@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     cur = db.cursor()
     query = (
-        "SELECT cities.id, cities.name, states.name "
+        "SELECT cities.name "
         "FROM cities "
         "JOIN states ON cities.state_id = states.id "
         "WHERE states.name = %s "
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     cities = cur.fetchall()
 
     for city in cities:
-        print(city)
+        print(city[0])  # Print only the first column (city name)
     
     cur.close()
     db.close()
