@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Lists all State objects containing the letter "a" from the database hbtn_0e_6_usa.
+Lists all State objects containing
+the letter "a" from the database hbtn_0e_6_usa.
 """
 import sys
 from sqlalchemy import create_engine
