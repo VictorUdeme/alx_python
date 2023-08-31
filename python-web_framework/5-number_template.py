@@ -15,7 +15,7 @@ def display_hbnb():
     return "HBNB"
 
 @app.route('/c/<text>', strict_slashes=False)
-def display_text(text):
+def display_c(text):
     return "C " + text.replace("_", " ")
 
 @app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
@@ -31,8 +31,5 @@ def display_number(n):
 def display_number_template(n):
     return render_template('5-number.html', number=n)
 
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
-
