@@ -20,8 +20,10 @@ class Rectangle(BaseGeometry):
             The __init__() method of this subclass validate the 
             width and height perimeters
         """
-        self.__width = super().integer_validator("width", width)
-        self.__height = super().integer_validator("height", height)
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
+        self.__width = width
+        self.__height = height
 
 
     def area(self):
