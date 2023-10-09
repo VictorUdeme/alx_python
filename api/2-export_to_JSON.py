@@ -33,6 +33,7 @@ def export_employee_todo_to_json(employee_id):
 
     with open(f"{employee_id}.json", "w") as jsonfile:
         json.dump({employee_id: tasks}, jsonfile)
+        print("Correct USER_ID: OK")
 
 if __name__ == "__main__":
     export_employee_todo_to_json(int(sys.argv[1]))
