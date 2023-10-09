@@ -1,7 +1,3 @@
-"""
-This module provides a function to fetch an employee's TODO list from a REST API and export it to a CSV file.
-"""
-
 import csv
 import requests
 import sys
@@ -26,7 +22,13 @@ def export_employee_todo_to_csv(employee_id):
     with open(f"{employee_id}.csv", "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todos:
-            writer.writerow([employee_id, user['username'], task['completed'], task['title']])
+            # Convert the boolean value to a string
+            completed_status = str(task['completed']).lower()
+            writer.writerow([employee_id, user['username'], completed_status, task['title']])
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+        sys.exit(1)
+
     export_employee_todo_to_csv(int(sys.argv[1]))
