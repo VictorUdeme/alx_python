@@ -1,5 +1,5 @@
-import csv
 import requests
+import csv
 import sys
 
 def export_employee_todo_to_csv(employee_id):
@@ -22,16 +22,19 @@ def export_employee_todo_to_csv(employee_id):
     csv_filename = f"{employee_id}.csv"
 
     with open(csv_filename, "w", newline="") as csvfile:
-        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        
-        writer.writeheader()
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+
         for task in todos:
             # Format TASK_COMPLETED_STATUS as "Completed" or "Not Completed"
             task_completed_status = "Completed" if task['completed'] else "Not Completed"
-            writer.writerow({"USER_ID": employee_id, "USERNAME": user['username'], "TASK_COMPLETED_STATUS": task_completed_status, "TASK_TITLE": task['title']})
+            csv_writer.writerow([user['id'], user['username'], task_completed_status, task['title']])
 
     print(f"CSV file '{csv_filename}' has been created with the employee's TODO list.")
 
 if __name__ == "__main__":
-    export_employee_todo_to_csv(int(sys.argv[1]))
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+    else:
+        employee_id = int(sys.argv[1])
+        export_employee_todo_to_csv(employee_id)
