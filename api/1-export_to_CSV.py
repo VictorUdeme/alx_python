@@ -20,11 +20,14 @@ def export_employee_todo_to_csv(employee_id):
     todos = response.json()
 
     with open(f"{employee_id}.csv", "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        
+        writer.writeheader()
         for task in todos:
             # Format TASK_COMPLETED_STATUS as "Completed" or "Not Completed"
             task_completed_status = "Completed" if task['completed'] else "Not Completed"
-            writer.writerow([employee_id, user['username'], task_completed_status, task['title']])
+            writer.writerow({"USER_ID": employee_id, "USERNAME": user['username'], "TASK_COMPLETED_STATUS": task_completed_status, "TASK_TITLE": task['title']})
 
 if __name__ == "__main__":
     export_employee_todo_to_csv(int(sys.argv[1]))
