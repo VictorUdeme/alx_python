@@ -22,7 +22,9 @@ def export_employee_todo_to_csv(employee_id):
     with open(f"{employee_id}.csv", "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todos:
-            writer.writerow([employee_id, user['username'], task['completed'], task['title']])
+            # Format TASK_COMPLETED_STATUS as "Completed" or "Not Completed"
+            task_completed_status = "Completed" if task['completed'] else "Not Completed"
+            writer.writerow([employee_id, user['username'], task_completed_status, task['title']])
 
 if __name__ == "__main__":
     export_employee_todo_to_csv(int(sys.argv[1]))
