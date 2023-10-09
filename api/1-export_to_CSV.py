@@ -1,12 +1,25 @@
-import csv
+"""
+This module provides a function to fetch and display the progress of an employee's TODO list
+from a REST API and export the data in CSV format. The employee is specified by their ID.
+"""
+
 import requests
+import csv
 import sys
 
-def export_employee_todo_to_csv(employee_id):
+def get_employee_todo_progress_and_export_csv(employee_id):
     """
-    The function fetches the employee's details and their TODO list from the API, and writes them to a CSV file.
-    The CSV file is named after the employee's ID and contains the following columns:
-    USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE
+    The function fetches the employee's details and their TODO list from the API, filters the tasks
+    that are marked as completed, and prints the progress in the following format:
+
+    Employee EMPLOYEE_NAME is done with tasks(NUMBER_OF_DONE_TASKS/TOTAL_NUMBER_OF_TASKS):
+    TASK_TITLE
+
+    It also exports the data in CSV format with the following columns:
+    - USER_ID
+    - USERNAME
+    - TASK_COMPLETED_STATUS
+    - TASK_TITLE
 
     Args:
     employee_id (int): The ID of the employee.
@@ -19,10 +32,25 @@ def export_employee_todo_to_csv(employee_id):
     response = requests.get(todos_url)
     todos = response.json()
 
-    with open(f"{employee_id}.csv", "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for task in todos:
-            writer.writerow([employee_id, user['username'], task['completed'], task['title']])
+    done_tasks = [task for task in todos if task['completed']]
+
+    # Display employee TODO list progress
+    print(f"Employee {user['name']} is done with tasks({len(done_tasks)}/{len(todos)}):")
+    for task in done_tasks:
+        print(f"\t {task['title']}")
+
+    # Export data to CSV file
+    csv_filename = f"{employee_id}.csv"
+    with open(csv_filename, mode='w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+
+        for task in done_tasks:
+            csv_writer.writerow([user['id'], user['username'], "Completed", task['title']])
 
 if __name__ == "__main__":
-    export_employee_todo_to_csv(int(sys.argv[1]))
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+    else:
+        employee_id = int(sys.argv[1])
+        get_employee_todo_progress_and_export_csv(employee_id)
