@@ -1,5 +1,5 @@
-import requests
 import csv
+import requests
 import sys
 
 def export_employee_todo_to_csv(employee_id):
@@ -19,22 +19,10 @@ def export_employee_todo_to_csv(employee_id):
     response = requests.get(todos_url)
     todos = response.json()
 
-    csv_filename = f"{employee_id}.csv"
-
-    with open(csv_filename, "w", newline="") as csvfile:
-        csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-
+    with open(f"{employee_id}.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todos:
-            # Format TASK_COMPLETED_STATUS as "Completed" or "Not Completed"
-            task_completed_status = "Completed" if task['completed'] else "Not Completed"
-            csv_writer.writerow([user['id'], user['username'], task_completed_status, task['title']])
-
-    print(f"CSV file '{csv_filename}' has been created with the employee's TODO list.")
+            writer.writerow([employee_id, user['username'], task['completed'], task['title']])
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-    else:
-        employee_id = int(sys.argv[1])
-        export_employee_todo_to_csv(employee_id)
+    export_employee_todo_to_csv(int(sys.argv[1]))
