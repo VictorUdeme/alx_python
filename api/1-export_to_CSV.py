@@ -1,28 +1,22 @@
 import csv
+import json
 import requests
 import sys
 
-def export_employee_todo_to_csv(employee_id):
-    """
-    The function fetches the employee's details and their TODO list from the API, and writes them to a CSV file.
-    The CSV file is named after the employee's ID and contains the following columns:
-    USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE
-
-    Args:
-    employee_id (int): The ID of the employee.
-    """
-    user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
-
-    response = requests.get(user_url)
-    user = response.json()
-    response = requests.get(todos_url)
-    todos = response.json()
-
-    with open(f"{employee_id}.csv", "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for task in todos:
-            writer.writerow([employee_id, user['username'], task['completed'], task['title']])
-
 if __name__ == "__main__":
-    export_employee_todo_to_csv(int(sys.argv[1]))
+    employee_id = sys.argv[1]
+    api_request = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
+    api_request1 = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos")
+    pjson = api_request.json()
+    pjson1 = api_request1.json()
+
+    #export data to csv data
+    filename = "{}.csv".format(employee_id)
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile, quoting = csv.QUOTE_ALL)
+        for item in pjson1:
+            user_id = employee_id
+            username = pjson['username']
+            task_completed_status = item['completed']
+            task_title = item['title']
+            writer.writerow([user_id, username, task_completed_status, task_title])
