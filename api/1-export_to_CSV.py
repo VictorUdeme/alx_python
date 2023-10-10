@@ -3,14 +3,12 @@ import json
 import requests
 import sys
 
-if __name__ == "main":
+if __name__ == "__main__":
     employee_id = sys.argv[1]
-    api_request = requests.get("https://jsonplaceholder.typicode.com/users/%7B%7D".format(employee_id))
-    api_request1 = requests.get("https://jsonplaceholder.typicode.com/users/%7B%7D/todos".format(employee_id))
-    data = api_request.text
-    pjson = json.loads(data)
-    data1 = api_request1.text
-    pjson1 = json.loads(data1)
+    api_request = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
+    api_request1 = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos")
+    pjson = api_request.json()
+    pjson1 = api_request1.json()
 
     #export data to csv data
     filename = "{}.csv".format(employee_id)
