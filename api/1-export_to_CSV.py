@@ -2,6 +2,7 @@ import csv
 import requests
 import sys
 
+
 def get_employee_data(employee_id):
     """
     Fetches employee's TODO list progress and exports it to a CSV file.
