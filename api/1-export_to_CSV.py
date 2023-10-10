@@ -1,14 +1,9 @@
 import csv
 import requests
 import sys
+import os
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <employee_id>")
-        sys.exit(1)
-
-    employee_id = sys.argv[1]
-    
+def user_info(employee_id):
     # Make API requests to retrieve user and tasks data
     user_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}")
     tasks_response = requests.get(f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos")
@@ -35,3 +30,19 @@ if __name__ == "__main__":
             writer.writerow([user_id, username, task_completed_status, task_title])
 
     print(f"CSV file '{filename}' has been created.")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+        sys.exit(1)
+
+    employee_id = sys.argv[1]
+    user_info(employee_id)
+
+    # Check if the CSV file exists
+    filename = f"{employee_id}.csv"
+    if os.path.exists(filename):
+        # Read and process the CSV file here if needed
+        pass
+    else:
+        print(f"CSV file '{filename}' does not exist.")
