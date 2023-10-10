@@ -31,6 +31,13 @@ def user_info(employee_id):
 
     print(f"CSV file '{filename}' has been created.")
 
+    # Check if the CSV file exists and read/process it here if needed
+    if os.path.exists(filename):
+        # Read and process the CSV file here if needed
+        pass
+    else:
+        print(f"CSV file '{filename}' does not exist.")
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python script.py <employee_id>")
@@ -38,11 +45,3 @@ if __name__ == "__main__":
 
     employee_id = sys.argv[1]
     user_info(employee_id)
-
-    # Check if the CSV file exists
-    filename = f"{employee_id}.csv"
-    if os.path.exists(filename):
-        # Read and process the CSV file here if needed
-        pass
-    else:
-        print(f"CSV file '{filename}' does not exist.")
