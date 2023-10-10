@@ -1,7 +1,7 @@
 import csv
+import os
 import requests
 import sys
-import os
 
 def user_info(employee_id):
     # Make API requests to retrieve user and tasks data
