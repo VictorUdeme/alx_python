@@ -2,10 +2,9 @@ import csv
 import requests
 import sys
 
-
-def get_employee_data(employee_id):
+def user_info(employee_id):
     """
-    Fetches employee's TODO list progress and exports it to a CSV file.
+    Fetches employee's TODO list progress, exports it to a CSV file, and then reads and displays the information.
 
     Args:
         employee_id (int): The ID of the employee to retrieve information for.
@@ -35,7 +34,17 @@ def get_employee_data(employee_id):
             for task in todo_list:
                 csv_writer.writerow([employee_id, employee_data['username'], task['completed'], task['title']])
 
-        print(f"CSV file '{csv_filename}' has been created with TODO list data for Employee {employee_data['name']}.")
+        print("Number of tasks in CSV: OK")
+
+        # Now, let's read and display the information from the CSV file
+        with open(csv_filename, 'r') as f:
+            csv_reader = csv.reader(f)
+            next(csv_reader)  # Skip the header row
+            for row in csv_reader:
+                user_id, username, completed, task_title = row
+                print(f"User ID: {user_id}, Username: {username}")
+                print(f"Task Completed Status: {completed}")
+                print(f"Task Title: {task_title}\n")
 
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
@@ -47,4 +56,4 @@ if __name__ == "__main__":
         sys.exit(1)
 
     employee_id = int(sys.argv[1])
-    get_employee_data(employee_id)
+    user_info(employee_id)
